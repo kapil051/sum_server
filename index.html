@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>front end to calculate sum</title>
+</head>
+<body>
+
+        <input type="text" placeholder="input1" id="input1"> <br>
+        <input type="text" placeholder="input2" id="input2"> <br>
+        <button onclick="calculateSum()">click me to find sum</button>
+          <div id="finalSum"></div>
+
+          <script>
+
+              async function calculateSum(){
+
+                let a=document.getElementById("input1").value;
+                let b=document.getElementById("input2").value;
+
+                let sum=await fetch("http://localhost:3000/sum?a="+a+"&b="+b);
+                let ans=await sum.text();
+                     console.log(ans);
+
+                   document.getElementById("finalSum").innerHTML="the final sum is :"+ans;
+                  
+               }
+
+          </script>
+    
+</body>
+</html>
